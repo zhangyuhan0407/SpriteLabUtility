@@ -14,7 +14,6 @@ public enum BTCommand: String, CustomStringConvertible {
     
     case CStatusSynchronized   = "statussynchronized"
     case CStatusMatching        = "statusmatching"
-//    case CStatusFighting        = "statusfighting"
     case CStatusEnding          = "statusending"
     
     case CCreateSpell           = "createspell"
@@ -22,6 +21,7 @@ public enum BTCommand: String, CustomStringConvertible {
     case CPlayerStatus          = "playerstatus"
     
     
+    case SStartSynchronizing    = "startsynchronizing"
     case SStartFighting         = "startfighting"
     case SEndFighting           = "endfighting"
     case SPlayerDisconnected    = "playerdisconnected"
@@ -37,8 +37,6 @@ public enum BTCommand: String, CustomStringConvertible {
             return .CStatusSynchronized
         case "statusmatching":
             return .CStatusMatching
-//        case "statusfighting":
-//            return .CStatusFighting
         case "statusending":
             return .CStatusEnding
             
@@ -49,6 +47,8 @@ public enum BTCommand: String, CustomStringConvertible {
         case "playerstatus":
             return .CPlayerStatus
             
+        case "startsynchronizing":
+            return .SStartSynchronizing
         case "startfighting":
             return .SStartFighting
         case "endfighting":
