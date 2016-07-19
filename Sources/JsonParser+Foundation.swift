@@ -9,10 +9,10 @@
 import Foundation
 
 public extension Json {
-    var anyValue: AnyObject {
+    var anyValue: Any {
         switch self {
         case .object(let ob):
-            var mapped: [String : AnyObject] = [:]
+            var mapped: [String : Any] = [:]
             ob.forEach { key, val in
                 mapped[key] = val.anyValue
             }
@@ -30,17 +30,17 @@ public extension Json {
         }
     }
     
-    var foundationDictionary: [String : AnyObject]? {
-        return anyValue as? [String : AnyObject]
+    var foundationDictionary: [String : Any]? {
+        return anyValue as? [String : Any]
     }
     
-    var foundationArray: [AnyObject]? {
-        return anyValue as? [AnyObject]
+    var foundationArray: [Any]? {
+        return anyValue as? [Any]
     }
 }
 
 extension Json {
-    public static func from(_ any: AnyObject) -> Json {
+    public static func from(_ any: Any) -> Json {
         switch any {
             // If we're coming from foundation, it will be an `NSNumber`.
             //This represents double, integer, and boolean.
@@ -48,9 +48,9 @@ extension Json {
             return .number(number)
         case let string as String:
             return .string(string)
-        case let object as [String : AnyObject]:
+        case let object as [String : Any]:
             return from(object)
-        case let array as [AnyObject]:
+        case let array as [Any]:
             return .array(array.map(from))
         case _ as NSNull:
             return .null
@@ -60,7 +60,7 @@ extension Json {
         return .null
     }
     
-    public static func from(_ any: [String : AnyObject]) -> Json {
+    public static func from(_ any: [String : Any]) -> Json {
         var mutable: [String : Json] = [:]
         any.forEach { key, val in
             mutable[key] = .from(val)

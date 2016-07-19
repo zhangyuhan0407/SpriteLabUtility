@@ -8,9 +8,9 @@
 
 public protocol OCTModel {
     
-    init(fromDictionary: Dictionary<String, AnyObject>)
+    init(fromDictionary: [String: Any])
     
-    func toDictionary() -> Dictionary<String, AnyObject?>
+    func toDictionary() -> [String: Any]
     
 }
 

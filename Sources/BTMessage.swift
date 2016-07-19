@@ -29,7 +29,7 @@ public struct BTMessage: CustomStringConvertible {
     
     public var command: BTCommand
     
-    public var params: [String: AnyObject]
+    public var params: [String: Any]
     
     
     public init?(from string: String) {
@@ -48,7 +48,7 @@ public struct BTMessage: CustomStringConvertible {
             }
             
             
-            guard let params = json["params"].dictionaryObject else {
+            guard let params = json["params"].foundationDictionary else {
                 return nil
             }
             
@@ -91,8 +91,8 @@ public struct BTMessage: CustomStringConvertible {
 
     public var description: String {
         
-        let dict: [String: AnyObject] = ["userid": self.userid, "command": self.command.description, "params": self.params]
-        return JSON(dict).description
+        let dict: [String: Any] = ["userid": self.userid, "command": self.command.description, "params": self.params]
+        return JSON.from(dict).description
         
     }
     
