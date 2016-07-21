@@ -43,7 +43,7 @@ public enum BTCommand: String, CustomStringConvertible {
         case "createspell":
             return .CCreateSpell
         case "castspell":
-            return .CCreateSpell
+            return .CCastSpell
         case "playerstatus":
             return .CPlayerStatus
             

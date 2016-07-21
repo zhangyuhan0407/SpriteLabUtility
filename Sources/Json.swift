@@ -7,8 +7,6 @@
 //
 
 
-public typealias JSON = Json
-
 
 public enum Json: CustomStringConvertible, CustomDebugStringConvertible, Equatable {
     
